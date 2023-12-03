@@ -2,8 +2,7 @@
 local M = {}
 
 M.ui = {
-  theme = "everforest",
-  theme_toggle = { "everforest", "github_light" }
+  theme_toggle = { "catppuccin", "github_light" }
 }
 
 M.plugins = "custom.plugins"
