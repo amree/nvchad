@@ -3,7 +3,11 @@ local plugins = {
     "williamboman/mason.nvim",
     opts = {
       ensure_installed = {
+        "elixir-ls",
         "gopls",
+        "gofumpt",
+        "golines",
+        "goimports-reviser",
       },
     },
   },
@@ -81,7 +85,16 @@ local plugins = {
     config = function()
       require "custom.configs.copilot"
     end,
-  }
+  },
+  -- formatters
+  {
+    "nvimtools/none-ls.nvim",
+    ft = {"go"},
+    event = "InsertEnter",
+    opts = function()
+      return require("custom.configs.none-ls")
+    end
+  },
 }
 
 return plugins
