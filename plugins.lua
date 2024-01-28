@@ -95,6 +95,14 @@ local plugins = {
       return require("custom.configs.none-ls")
     end
   },
+  -- matching brackets
+  {
+    "andymass/vim-matchup",
+    event = "CursorMoved",
+    config = function()
+      vim.g.matchup_matchparen_offscreen = { method = "popup" }
+    end,
+  },
 }
 
 return plugins
