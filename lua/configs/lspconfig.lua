@@ -1,9 +1,5 @@
--- load defaults i.e lua_lsp
 require("nvchad.configs.lspconfig").defaults()
-
 local lspconfig = require "lspconfig"
-
--- EXAMPLE
 local servers = {
   "cssls",
   "html",
@@ -19,3 +15,8 @@ for _, lsp in ipairs(servers) do
     capabilities = nvlsp.capabilities,
   }
 end
+
+-- zsh -c "source ~/.zshrc && chruby $(cat .ruby-version) && ruby-lsp"
+lspconfig.ruby_lsp.setup {
+  cmd = { "/usr/local/bin/rubylsp" },
+}
