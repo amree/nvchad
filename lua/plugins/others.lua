@@ -1,36 +1,4 @@
 local plugins = {
-  {
-    "williamboman/mason.nvim",
-    opts = {
-      ensure_installed = {
-        "elixir-ls",
-        "gopls",
-        "gofumpt",
-        "golines",
-        "goimports-reviser",
-      },
-    },
-  },
-  {
-    "neovim/nvim-lspconfig",
-    config = function()
-      require "plugins.configs.lspconfig"
-      require "custom.configs.lspconfig"
-    end,
-  },
-
-  --
-  -- My plugins
-  --
-
-  -- handles escape with jj
-  {
-    "max397574/better-escape.nvim",
-    event = "InsertEnter",
-    config = function()
-      require("better_escape").setup()
-    end,
-  },
   -- add/delete/replace surround
   {
     "machakann/vim-sandwich",
@@ -38,6 +6,7 @@ local plugins = {
     keys = {"sa", "sd", "sr"},
     event = "BufRead",
   },
+
   -- open code on the web
   {
     "linrongbin16/gitlinker.nvim",
@@ -46,6 +15,7 @@ local plugins = {
       require("gitlinker").setup()
     end,
   },
+
   -- strip trailing whitespace
   {
     "echasnovski/mini.trailspace",
@@ -60,11 +30,13 @@ local plugins = {
       })
     end
   },
+
   -- git
   {
     "tpope/vim-fugitive",
     event = "BufRead",
   },
+
   -- end block support
   {
     "RRethy/nvim-treesitter-endwise",
@@ -77,24 +49,17 @@ local plugins = {
       })
     end,
   },
+
   -- copilot
   {
     "zbirenbaum/copilot.lua",
     cmd = "Copilot",
     event = "InsertEnter",
     config = function()
-      require "custom.configs.copilot"
+      require "configs.copilot"
     end,
   },
-  -- formatters
-  {
-    "nvimtools/none-ls.nvim",
-    ft = {"go"},
-    event = "InsertEnter",
-    opts = function()
-      return require("custom.configs.none-ls")
-    end
-  },
+
   -- matching brackets
   {
     "andymass/vim-matchup",
@@ -106,4 +71,3 @@ local plugins = {
 }
 
 return plugins
-
