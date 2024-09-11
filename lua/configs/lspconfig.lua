@@ -1,22 +1,34 @@
-require("nvchad.configs.lspconfig").defaults()
-local lspconfig = require "lspconfig"
+local configs = require "nvchad.configs.lspconfig"
+local util = require "lspconfig.util"
+
 local servers = {
-  "cssls",
-  "html",
-  "ruby_lsp",
+  cssls = {},
+  gopls = {
+    cmd = { "gopls" },
+    filetypes = { "go", "gomod", "gotmpl" },
+    root_dir = util.root_pattern("go.mod", ".git"),
+    settings = {
+      gopls = {
+        completeUnimported = true,
+        usePlaceholders = true,
+        analyses = {
+          unusedparams = true,
+        },
+      },
+    },
+  },
+  html = {},
+  ruby_lsp = {
+    -- TODO: Figure out how to do itwithout executing a shell command
+    -- zsh -c "source ~/.zshrc && chruby $(cat .ruby-version) && ruby-lsp"
+    cmd = { "/usr/local/bin/rubylsp" },
+  },
 }
-local nvlsp = require "nvchad.configs.lspconfig"
 
--- lsps with default config
-for _, lsp in ipairs(servers) do
-  lspconfig[lsp].setup {
-    on_attach = nvlsp.on_attach,
-    on_init = nvlsp.on_init,
-    capabilities = nvlsp.capabilities,
-  }
+for name, opts in pairs(servers) do
+  opts.on_init = configs.on_init
+  opts.on_attach = configs.on_attach
+  opts.capabilities = configs.capabilities
+
+  require("lspconfig")[name].setup(opts)
 end
-
--- zsh -c "source ~/.zshrc && chruby $(cat .ruby-version) && ruby-lsp"
-lspconfig.ruby_lsp.setup {
-  cmd = { "/usr/local/bin/rubylsp" },
-}
