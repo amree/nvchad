@@ -6,13 +6,13 @@
 local M = {}
 
 M.base46 = {
-  theme = "chadtain",
-  theme_toggle = { "chadtain", "github_light" },
+	theme = "chadtain",
+	theme_toggle = { "chadtain", "github_light" },
 
-  hl_override = {
-    Comment = { italic = true },
-    ["@comment"] = { italic = true },
-  },
+	hl_override = {
+		Comment = { italic = true },
+		["@comment"] = { italic = true },
+	},
 }
 
 return M
