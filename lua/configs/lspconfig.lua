@@ -18,11 +18,13 @@ local servers = {
 		},
 	},
 	html = {},
+	-- rubocop = {},
 	ruby_lsp = {
 		-- TODO: Figure out how to do itwithout executing a shell command
 		-- zsh -c "source ~/.zshrc && chruby $(cat .ruby-version) && ruby-lsp"
 		cmd = { "/usr/local/bin/rubylsp" },
 	},
+	standardrb = {},
 }
 
 for name, opts in pairs(servers) do
