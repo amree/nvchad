@@ -25,6 +25,7 @@ local servers = {
 		cmd = { "/usr/local/bin/rubylsp" },
 	},
 	standardrb = {},
+	ts_ls = {},
 }
 
 for name, opts in pairs(servers) do
