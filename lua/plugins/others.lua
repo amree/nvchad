@@ -77,6 +77,15 @@ local plugins = {
 			vim.notify = require("notify")
 		end,
 	},
+
+	-- better diff viewer
+	{
+		"sindrets/diffview.nvim",
+		event = "BufRead",
+		config = function()
+			require("diffview").setup()
+		end,
+	},
 }
 
 return plugins
