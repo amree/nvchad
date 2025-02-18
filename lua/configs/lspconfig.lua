@@ -21,9 +21,19 @@ local servers = {
 	},
 	html = {},
 	ruby_lsp = {},
-	-- standardrb = {},
-	stimulus_ls = {},
-	ts_ls = {},
+	standardrb = {},
+	-- rubocop = {},
+	-- stimulus_ls = {},
+	ts_ls = {
+		settings = {
+			javascript = {
+				validate = {
+					enable = true,
+					checkJs = false, -- Don't type check .js files as if they were .ts
+				},
+			},
+		},
+	},
 	pyright = {},
 }
 
