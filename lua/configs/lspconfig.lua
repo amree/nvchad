@@ -1,5 +1,6 @@
 local configs = require("nvchad.configs.lspconfig")
 local util = require("lspconfig.util")
+local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
 
 local servers = {
 	cssls = {},
@@ -21,9 +22,7 @@ local servers = {
 	},
 	html = {},
 	ruby_lsp = {},
-	standardrb = {},
-	-- rubocop = {},
-	-- stimulus_ls = {},
+	stimulus_ls = {},
 	ts_ls = {
 		settings = {
 			javascript = {
@@ -36,6 +35,12 @@ local servers = {
 	},
 	pyright = {},
 }
+
+if project_name == "petakopi.my" then
+	servers.standardrb = {}
+elseif project_name == "coinanalytics" then
+	servers.rubocop = {}
+end
 
 for name, opts in pairs(servers) do
 	opts.on_init = configs.on_init
