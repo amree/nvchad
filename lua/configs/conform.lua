@@ -2,6 +2,7 @@ local options = {
 	formatters_by_ft = {
 		go = {
 			"gofumpt",
+			"goimports",
 			"goimports-reviser",
 			"golines",
 		},

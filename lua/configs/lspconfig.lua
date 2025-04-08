@@ -39,7 +39,7 @@ local servers = {
 if project_name == "petakopi.my" then
 	servers.standardrb = {}
 elseif project_name == "coinanalytics" then
-	servers.rubocop = {}
+	-- servers.rubocop = {}
 end
 
 for name, opts in pairs(servers) do

@@ -35,3 +35,9 @@ require("nvchad.autocmds")
 vim.schedule(function()
 	require("mappings")
 end)
+
+-- load project specific configurations
+local project_config_path = vim.fn.getcwd() .. "/.nvim.lua"
+if vim.fn.filereadable(project_config_path) == 1 then
+	vim.cmd("luafile " .. project_config_path)
+end
