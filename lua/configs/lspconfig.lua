@@ -22,7 +22,7 @@ local servers = {
 	},
 	html = {},
 	ruby_lsp = {},
-	stimulus_ls = {},
+	-- stimulus_ls = {},
 	ts_ls = {
 		settings = {
 			javascript = {
