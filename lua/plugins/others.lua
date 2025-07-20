@@ -88,6 +88,12 @@ local plugins = {
 	},
 
 	{ import = "nvchad.blink.lazyspec" },
+
+	-- integrate with tmux
+	{
+		"christoomey/vim-tmux-navigator",
+		lazy = false,
+	},
 }
 
 return plugins
