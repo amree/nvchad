@@ -87,7 +87,19 @@ local plugins = {
 		end,
 	},
 
+	-- Import NvChad's blink.cmp config
 	{ import = "nvchad.blink.lazyspec" },
+
+	-- Override blink.cmp keymap for snippet navigation
+	{
+		"saghen/blink.cmp",
+		opts = function(_, opts)
+			-- Merge with NvChad's default config, but override keymap
+			local custom_config = require("configs.blink")
+			opts.keymap = custom_config.keymap
+			return opts
+		end,
+	},
 
 	-- integrate with tmux
 	{
