@@ -38,6 +38,6 @@ require("copilot").setup({
     cvs = false,
     ["."] = false,
   },
-  copilot_node_command = "/Users/amree/.asdf/shims/node",
+  copilot_node_command = "/Users/amree/.asdf/installs/nodejs/24.11.0/bin/node",
   server_opts_overrides = {},
 })
