@@ -45,6 +45,10 @@ local plugins = {
 		keys = {
 			{ "<leader>gm", "<cmd>GitMessenger<cr>", desc = "Git Messenger" },
 		},
+		init = function()
+			-- Add border to popup window
+			vim.g.git_messenger_floating_win_opts = { border = "single" }
+		end,
 	},
 
 	-- end block support
