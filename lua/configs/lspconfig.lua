@@ -1,5 +1,4 @@
 local configs = require("nvchad.configs.lspconfig")
-local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
 
 -- Set global LSP defaults for all servers
 vim.lsp.config("*", {
@@ -42,10 +41,20 @@ local servers = {
 	pyright = {},
 }
 
-if project_name == "petakopi.my" then
-	servers.standardrb = {}
-elseif project_name == "coinanalytics" then
-	-- servers.rubocop = {}
+-- Detect Ruby linter based on project config files
+local has_standardrb = vim.fn.filereadable(vim.fn.getcwd() .. "/.standard.yml") == 1
+local has_rubocop = vim.fn.filereadable(vim.fn.getcwd() .. "/.rubocop.yml") == 1
+
+if has_standardrb then
+	servers.standardrb = {
+		cmd = { "bundle", "exec", "standardrb", "--lsp" },
+		root_markers = { ".standard.yml", "Gemfile", ".git" },
+	}
+elseif has_rubocop then
+	servers.rubocop = {
+		cmd = { "bundle", "exec", "rubocop", "--lsp" },
+		root_markers = { ".rubocop.yml", "Gemfile", ".git" },
+	}
 end
 
 -- Configure and enable each LSP server
