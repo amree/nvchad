@@ -106,8 +106,9 @@ local plugins = {
 				on_attach = configs.on_attach,
 				capabilities = configs.capabilities,
 				settings = {
-					-- Auto-complete function calls (disabled for JSX compatibility)
-					complete_function_calls = false,
+					-- Auto-complete function calls with parentheses
+					-- Note: Also adds () to JSX components, but usually you don't accept that completion
+					complete_function_calls = true,
 					-- Enable code actions for organizing imports
 					expose_as_code_action = "all",
 					-- JSX close tag completion
