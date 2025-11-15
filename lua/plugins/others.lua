@@ -87,6 +87,17 @@ local plugins = {
 		end,
 	},
 
+	-- better diagnostics list
+	{
+		"folke/trouble.nvim",
+		cmd = "Trouble",
+		keys = {
+			{ "<leader>xx", "<cmd>Trouble diagnostics toggle<cr>", desc = "Diagnostics (Trouble)" },
+			{ "<leader>xd", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", desc = "Buffer Diagnostics (Trouble)" },
+		},
+		opts = {},
+	},
+
 	-- Import NvChad's blink.cmp config
 	{ import = "nvchad.blink.lazyspec" },
 
