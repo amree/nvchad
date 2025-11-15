@@ -37,6 +37,16 @@ local plugins = {
 		event = "BufRead",
 	},
 
+	-- show git commit message for current line
+	-- Usage: <leader>gm to open popup, then <C-w>w to enter popup
+	-- Inside popup: o = older commit, O = newer commit, d = diff, q = close
+	{
+		"rhysd/git-messenger.vim",
+		keys = {
+			{ "<leader>gm", "<cmd>GitMessenger<cr>", desc = "Git Messenger" },
+		},
+	},
+
 	-- end block support
 	{
 		"RRethy/nvim-treesitter-endwise",
