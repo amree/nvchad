@@ -17,12 +17,22 @@ return {
 		"nvim-treesitter/nvim-treesitter",
 		opts = {
 			ensure_installed = {
+				-- Existing
 				"css",
 				"html",
 				"lua",
 				"ruby",
 				"vim",
 				"vimdoc",
+				-- React/TypeScript/Vite
+				"javascript",
+				"typescript",
+				"tsx",
+				"json",
+				"jsonc",
+				"scss",
+				"markdown",
+				"markdown_inline",
 			},
 		},
 	},

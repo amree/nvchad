@@ -28,17 +28,33 @@ local servers = {
 	html = {},
 	ruby_lsp = {},
 	-- stimulus_ls = {},
-	ts_ls = {
-		settings = {
-			javascript = {
-				validate = {
-					enable = true,
-					checkJs = false, -- Don't type check .js files as if they were .ts
-				},
-			},
+	-- ts_ls = {}, -- Disabled: typescript-tools.nvim replaces ts_ls
+	pyright = {},
+	-- Emmet support for HTML/CSS/React
+	emmet_language_server = {
+		filetypes = {
+			"html",
+			"css",
+			"scss",
+			"javascript",
+			"javascriptreact",
+			"typescript",
+			"typescriptreact",
 		},
 	},
-	pyright = {},
+	-- TailwindCSS support
+	tailwindcss = {
+		root_markers = { "tailwind.config.js", "tailwind.config.ts", "tailwind.config.cjs", "tailwind.config.mjs" },
+		filetypes = {
+			"html",
+			"css",
+			"scss",
+			"javascript",
+			"javascriptreact",
+			"typescript",
+			"typescriptreact",
+		},
+	},
 }
 
 -- Detect Ruby linter based on project config files
