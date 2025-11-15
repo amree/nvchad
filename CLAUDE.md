@@ -90,8 +90,11 @@ This replaces hardcoded project name checks and works for any Ruby project.
 - **Go:** gopls with gofumpt, goimports, unused params analysis
 - **Ruby:** ruby_lsp + auto-detected standardrb/rubocop
 - **JavaScript/TypeScript:** ts_ls (JavaScript validation enabled, checkJs disabled)
+- **React/TypeScript:** typescript-tools.nvim with auto-imports and organize imports
 - **Python:** pyright
 - **Web:** cssls, html, eslint
+- **Emmet:** emmet_language_server for HTML/CSS/React
+- **TailwindCSS:** tailwindcss with auto-detection
 
 ### Formatting System
 
@@ -102,6 +105,15 @@ This replaces hardcoded project name checks and works for any Ruby project.
 - **LSP fallback:** If no formatter configured for filetype, uses LSP formatting
 - **Go formatters:** Chained sequence: gofumpt → goimports → goimports-reviser → golines
 - **Lua formatter:** stylua
+- **JavaScript/TypeScript/React:** Biome (fast, modern formatter + linter)
+- **JSON:** Biome
+- **CSS/SCSS/HTML/Markdown/YAML:** Prettier (Biome doesn't support these yet)
+
+**Why Biome?**
+- Much faster than Prettier for JS/TS
+- Built-in linting capabilities
+- Better error messages
+- Compatible with existing ESLint projects
 
 Loads lazily on `BufWritePre` event.
 
@@ -163,6 +175,52 @@ vim.keymap.set("n", "<leader>t", ":!make test<CR>")
 - Swap files: Disabled (`o.swapfile = false`)
 - Trailing whitespace: Auto-removed on save (mini.trailspace)
 - Theme: "ashes" (dark) with toggle to "github_light"
+
+### React/TypeScript/Vite Development
+
+**Complete setup for modern web development:**
+
+**Syntax Highlighting:**
+- Treesitter parsers for: JavaScript, TypeScript, TSX, JSX, JSON, JSONC, CSS, SCSS, Markdown
+
+**Auto-Completion:**
+- TypeScript LSP (`ts_ls`) for basic IntelliSense
+- typescript-tools.nvim for enhanced features:
+  - Auto-imports on completion
+  - Organize imports on save
+  - JSX close tag completion
+  - Complete function calls with signatures
+- Copilot for AI-powered suggestions
+- blink.cmp for fast completion engine
+
+**Formatting & Linting:**
+- Biome for JS/TS/React/JSON (fast, modern)
+- Prettier for CSS/HTML/Markdown
+- ESLint LSP for existing projects with custom rules
+- Format on save enabled (2.5s timeout)
+
+**Emmet Support:**
+- emmet_language_server works in HTML, CSS, and React (JSX/TSX)
+- Expand abbreviations like `div.container>ul>li*3` with tab completion
+
+**TailwindCSS:**
+- Auto-detection via tailwind.config.js/ts
+- IntelliSense for class names
+- Color previews
+- Hover documentation
+
+**Package Management:**
+- package-info.nvim shows versions inline in package.json
+- Visual indicators for outdated packages
+- Quick actions to update dependencies
+
+**Key Features:**
+1. **Auto-imports:** Type a component name, get automatic import statement
+2. **Organize imports:** Remove unused, sort alphabetically on save
+3. **JSX close tags:** Auto-complete closing tags in React
+4. **Emmet in JSX:** Use Emmet abbreviations in React components
+5. **Format on save:** Consistent code style with Biome
+6. **ESLint integration:** Existing ESLint configs still work
 
 ## Common Commands
 
