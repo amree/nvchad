@@ -1,6 +1,12 @@
 local configs = require("nvchad.configs.lspconfig")
-local util = require("lspconfig.util")
 local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
+
+-- Set global LSP defaults for all servers
+vim.lsp.config("*", {
+	on_init = configs.on_init,
+	on_attach = configs.on_attach,
+	capabilities = configs.capabilities,
+})
 
 local servers = {
 	cssls = {},
@@ -8,7 +14,7 @@ local servers = {
 	gopls = {
 		cmd = { "gopls" },
 		filetypes = { "go", "gomod", "gotmpl" },
-		root_dir = util.root_pattern("go.mod", ".git"),
+		root_markers = { "go.mod", ".git" },
 		settings = {
 			gopls = {
 				completeUnimported = true,
@@ -42,10 +48,12 @@ elseif project_name == "coinanalytics" then
 	-- servers.rubocop = {}
 end
 
+-- Configure and enable each LSP server
 for name, opts in pairs(servers) do
-	opts.on_init = configs.on_init
-	opts.on_attach = configs.on_attach
-	opts.capabilities = configs.capabilities
-
-	require("lspconfig")[name].setup(opts)
+	if next(opts) ~= nil then
+		-- If server has custom config, apply it
+		vim.lsp.config(name, opts)
+	end
+	-- Enable the server
+	vim.lsp.enable(name)
 end
