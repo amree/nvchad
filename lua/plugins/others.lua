@@ -94,9 +94,12 @@ local plugins = {
 	{
 		"saghen/blink.cmp",
 		opts = function(_, opts)
-			-- Merge with NvChad's default config, but override keymap
+			-- Merge with NvChad's default config, but override keymap and completion settings
 			local custom_config = require("configs.blink")
 			opts.keymap = custom_config.keymap
+			-- Merge completion settings instead of replacing
+			opts.completion = opts.completion or {}
+			opts.completion.list = custom_config.completion.list
 			return opts
 		end,
 	},
