@@ -1,5 +1,13 @@
 local configs = require("nvchad.configs.lspconfig")
 
+-- Add folding capabilities for nvim-ufo
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.foldingRange = {
+	dynamicRegistration = false,
+	lineFoldingOnly = true,
+}
+configs.capabilities = vim.tbl_deep_extend("force", configs.capabilities, capabilities)
+
 -- Set global LSP defaults for all servers
 vim.lsp.config("*", {
 	on_init = configs.on_init,

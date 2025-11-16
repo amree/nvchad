@@ -112,6 +112,20 @@ local plugins = {
 		opts = {},
 	},
 
+	-- better code folding (disabled by default, use :UfoEnable to activate)
+	{
+		"kevinhwang91/nvim-ufo",
+		dependencies = "kevinhwang91/promise-async",
+		cmd = "UfoEnable",
+		keys = {
+			{ "zR", function() require("ufo").openAllFolds() end, desc = "Open all folds" },
+			{ "zM", function() require("ufo").closeAllFolds() end, desc = "Close all folds" },
+		},
+		config = function()
+			require("configs.ufo")
+		end,
+	},
+
 	-- Import NvChad's blink.cmp config
 	{ import = "nvchad.blink.lazyspec" },
 
