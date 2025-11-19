@@ -68,10 +68,43 @@ local options = {
 
 	formatters = {
 		-- Custom biome-check that runs format + lint with unsafe fixes
-		-- This removes unused imports without renaming variables (via biome.json config)
+		-- Hybrid approach: Only apply default indent settings if biome.json doesn't specify them
 		["biome-check"] = {
 			command = util.from_node_modules("biome"),
-			args = { "check", "--write", "--unsafe", "--stdin-file-path", "$FILENAME" },
+			args = function(self, ctx)
+				local base_args = { "check", "--write", "--unsafe" }
+
+				-- Check if biome.json or biome.jsonc exists and has formatter config
+				local biome_config_path = vim.fs.root(ctx.dirname, { "biome.json", "biome.jsonc" })
+				local has_formatter_config = false
+
+				if biome_config_path then
+					local config_files = { "biome.json", "biome.jsonc" }
+					for _, config_file in ipairs(config_files) do
+						local config_path = biome_config_path .. "/" .. config_file
+						if vim.fn.filereadable(config_path) == 1 then
+							local content = vim.fn.readfile(config_path)
+							local json_str = table.concat(content, "\n")
+							-- Check if formatter.indentStyle or formatter.indentWidth is defined
+							if json_str:match('"formatter"%s*:%s*{') and json_str:match('"indent') then
+								has_formatter_config = true
+								break
+							end
+						end
+					end
+				end
+
+				-- Only add default indent args if biome.json doesn't specify formatter settings
+				if not has_formatter_config then
+					table.insert(base_args, "--indent-style=space")
+					table.insert(base_args, "--indent-width=2")
+				end
+
+				table.insert(base_args, "--stdin-file-path")
+				table.insert(base_args, "$FILENAME")
+
+				return base_args
+			end,
 			stdin = true,
 			cwd = util.root_file({
 				"biome.json",

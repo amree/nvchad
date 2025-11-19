@@ -118,6 +118,14 @@ This replaces hardcoded project name checks and works for any Ruby project.
 - Better error messages
 - Compatible with existing ESLint projects
 
+**Biome Configuration (Hybrid Approach):**
+- **Respects project config:** If `biome.json` has `formatter.indentStyle` or `formatter.indentWidth`, uses those settings
+- **Provides sensible defaults:** If `biome.json` doesn't specify formatter settings, applies `--indent-style=space --indent-width=2`
+- This ensures:
+  - Projects with explicit Biome formatter configs are respected
+  - Projects without formatter configs get 2 spaces (instead of Biome's default tabs)
+  - Consistency with Prettier's default formatting style when no config exists
+
 **Auto-Detection Logic:**
 The configuration intelligently selects the formatter based on project files:
 1. Checks for `biome.json` or `biome.jsonc` → uses Biome
