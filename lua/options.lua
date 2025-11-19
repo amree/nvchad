@@ -9,3 +9,7 @@ o.colorcolumn = "80,100"
 
 -- Disable swap files
 o.swapfile = false
+
+-- Show invisible characters (tabs, trailing spaces, etc.)
+o.list = true
+o.listchars = "tab:→ ,trail:·,nbsp:␣"

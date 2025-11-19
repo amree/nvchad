@@ -13,4 +13,7 @@ map("n", "<C-j>", "<cmd>TmuxNavigateDown<cr>", { desc = "Navigate down" })
 map("n", "<C-k>", "<cmd>TmuxNavigateUp<cr>", { desc = "Navigate up" })
 map("n", "<C-l>", "<cmd>TmuxNavigateRight<cr>", { desc = "Navigate right" })
 
+-- Toggle invisible character display
+map("n", "<leader>ti", "<cmd>set list!<cr>", { desc = "Toggle invisible chars" })
+
 -- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")

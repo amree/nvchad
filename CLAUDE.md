@@ -105,8 +105,11 @@ This replaces hardcoded project name checks and works for any Ruby project.
 - **LSP fallback:** If no formatter configured for filetype, uses LSP formatting
 - **Go formatters:** Chained sequence: gofumpt → goimports → goimports-reviser → golines
 - **Lua formatter:** stylua
-- **JavaScript/TypeScript/React:** Biome (fast, modern formatter + linter)
-- **JSON:** Biome
+- **JavaScript/TypeScript/React:** Auto-detects formatter per project
+  - Uses **Biome** if `biome.json` or `biome.jsonc` exists in project root
+  - Uses **Prettier** if `.prettierrc` (or other Prettier config files) exists
+  - **No formatting** if neither config is found (respects project choice)
+- **JSON:** Auto-detects Biome or Prettier (same logic as JS/TS)
 - **CSS/SCSS/HTML/Markdown/YAML:** Prettier (Biome doesn't support these yet)
 
 **Why Biome?**
@@ -114,6 +117,14 @@ This replaces hardcoded project name checks and works for any Ruby project.
 - Built-in linting capabilities
 - Better error messages
 - Compatible with existing ESLint projects
+
+**Auto-Detection Logic:**
+The configuration intelligently selects the formatter based on project files:
+1. Checks for `biome.json` or `biome.jsonc` → uses Biome
+2. Checks for `.prettierrc` (and variants) → uses Prettier
+3. If neither found → skips formatting (respects projects without formatters)
+
+This allows you to work on different projects without changing your Neovim config.
 
 Loads lazily on `BufWritePre` event.
 
