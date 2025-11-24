@@ -46,7 +46,6 @@ local plugins = {
 	},
 
 	-- show git commit message for current line
-	-- Usage: <leader>gm to open popup, then <C-w>w to enter popup
 	-- Inside popup: o = older commit, O = newer commit, d = diff, q = close
 	{
 		"rhysd/git-messenger.vim",
@@ -54,8 +53,8 @@ local plugins = {
 			{ "<leader>gm", "<cmd>GitMessenger<cr>", desc = "Git Messenger" },
 		},
 		init = function()
-			-- Add border to popup window
 			vim.g.git_messenger_floating_win_opts = { border = "single" }
+			vim.g.git_messenger_always_into_popup = true
 		end,
 	},
 
