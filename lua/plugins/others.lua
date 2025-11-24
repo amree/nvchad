@@ -2,9 +2,7 @@ local plugins = {
 	-- add/delete/replace surround
 	{
 		"machakann/vim-sandwich",
-		lazy = false,
 		keys = { "sa", "sd", "sr" },
-		event = "BufRead",
 	},
 
 	-- open code on the web
@@ -34,7 +32,7 @@ local plugins = {
 	-- git
 	{
 		"tpope/vim-fugitive",
-		event = "BufRead",
+		cmd = { "Git", "G", "Gvdiffsplit", "Gread", "Gwrite", "Gblame" },
 	},
 
 	-- lazygit integration
@@ -93,7 +91,7 @@ local plugins = {
 	-- cool notifier
 	{
 		"rcarriga/nvim-notify",
-		event = "BufRead",
+		lazy = false,
 		config = function()
 			vim.notify = require("notify")
 		end,
@@ -102,10 +100,12 @@ local plugins = {
 	-- better diff viewer
 	{
 		"sindrets/diffview.nvim",
-		event = "BufRead",
-		config = function()
-			require("diffview").setup()
-		end,
+		cmd = { "DiffviewOpen", "DiffviewFileHistory", "DiffviewClose" },
+		keys = {
+			{ "<leader>gd", "<cmd>DiffviewOpen<cr>", desc = "Diffview Open" },
+			{ "<leader>gh", "<cmd>DiffviewFileHistory %<cr>", desc = "Diffview File History" },
+			{ "<leader>gq", "<cmd>DiffviewClose<cr>", desc = "Diffview Close" },
+		},
 	},
 
 	-- better diagnostics list

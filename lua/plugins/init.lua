@@ -24,6 +24,10 @@ return {
 				"ruby",
 				"vim",
 				"vimdoc",
+				-- Go
+				"go",
+				"gomod",
+				"gosum",
 				-- React/TypeScript/Vite
 				"javascript",
 				"typescript",

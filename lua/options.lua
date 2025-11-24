@@ -13,3 +13,6 @@ o.swapfile = false
 -- Show invisible characters (tabs, trailing spaces, etc.)
 o.list = true
 o.listchars = "tab:→ ,trail:·,nbsp:␣"
+
+-- Reduce which-key popup delay (default is 1000ms)
+o.timeoutlen = 300
