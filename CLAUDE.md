@@ -194,13 +194,51 @@ vim.keymap.set("n", "<leader>t", ":!make test<CR>")
 - Swap files: Disabled (`o.swapfile = false`)
 - Trailing whitespace: Auto-removed on save (mini.trailspace)
 - Theme: "ashes" (dark) with toggle to "github_light"
+- Which-key popup delay: 300ms (default is 1000ms)
+
+### Custom Keybindings
+
+| Key | Description | Plugin |
+|-----|-------------|--------|
+| `<leader>gg` | Open LazyGit | lazygit.nvim |
+| `<leader>gm` | Git line history (auto-focuses popup) | git-messenger.vim |
+| `<leader>gd` | Open diff view | diffview.nvim |
+| `<leader>gh` | File git history | diffview.nvim |
+| `<leader>gq` | Close diff view | diffview.nvim |
+| `<leader>xx` | Toggle diagnostics | trouble.nvim |
+| `<leader>xd` | Buffer diagnostics | trouble.nvim |
+| `<leader>ti` | Toggle invisible chars | built-in |
+| `<C-h/j/k/l>` | Tmux navigation | vim-tmux-navigator |
+| `sa/sd/sr` | Add/delete/replace surround | vim-sandwich |
+| `zR/zM` | Open/close all folds | nvim-ufo |
+
+### Custom Plugins
+
+| Plugin | Purpose | Loading |
+|--------|---------|---------|
+| lazygit.nvim | Git UI in floating window | On `<leader>gg` |
+| git-messenger.vim | Show commit for current line | On `<leader>gm` |
+| diffview.nvim | Advanced diff viewer | On command/keys |
+| vim-fugitive | Git commands | On `:Git` command |
+| gitlinker.nvim | Open code on GitHub | On `BufRead` |
+| vim-sandwich | Surround text objects | On `sa/sd/sr` keys |
+| mini.trailspace | Strip trailing whitespace | On `BufRead` |
+| nvim-treesitter-endwise | Auto-add `end` blocks | On `InsertEnter` |
+| copilot.lua | GitHub Copilot | On `InsertEnter` |
+| vim-matchup | Better % matching | On `CursorMoved` |
+| nvim-notify | Pretty notifications | Immediate |
+| trouble.nvim | Better diagnostics list | On command/keys |
+| nvim-ufo | Better code folding | On command/keys |
+| typescript-tools.nvim | Enhanced TS features | On TS/JS files |
+| package-info.nvim | Package.json versions | On JSON files |
+| vim-tmux-navigator | Tmux pane navigation | Immediate |
 
 ### React/TypeScript/Vite Development
 
 **Complete setup for modern web development:**
 
 **Syntax Highlighting:**
-- Treesitter parsers for: JavaScript, TypeScript, TSX, JSX, JSON, JSONC, CSS, SCSS, Markdown
+- Treesitter parsers for: JavaScript, TypeScript, TSX, JSX, JSON, JSONC, CSS, SCSS, Markdown, Go
 
 **Auto-Completion:**
 - TypeScript LSP (`ts_ls`) for basic IntelliSense
@@ -262,8 +300,10 @@ vim.keymap.set("n", "<leader>t", ":!make test<CR>")
 ### Git Operations
 ```vim
 :Git <command>        " vim-fugitive commands (commit, push, pull, etc.)
-:DiffviewOpen         " Open advanced diff viewer
-:DiffviewClose        " Close diff viewer
+:LazyGit              " Open LazyGit (or <leader>gg)
+:DiffviewOpen         " Open advanced diff viewer (or <leader>gd)
+:DiffviewFileHistory  " File git history (or <leader>gh)
+:DiffviewClose        " Close diff viewer (or <leader>gq)
 ```
 
 ### Theme
