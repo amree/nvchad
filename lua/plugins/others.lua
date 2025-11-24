@@ -37,6 +37,14 @@ local plugins = {
 		event = "BufRead",
 	},
 
+	-- lazygit integration
+	{
+		"kdheepak/lazygit.nvim",
+		keys = {
+			{ "<leader>gg", "<cmd>LazyGit<cr>", desc = "LazyGit" },
+		},
+	},
+
 	-- show git commit message for current line
 	-- Usage: <leader>gm to open popup, then <C-w>w to enter popup
 	-- Inside popup: o = older commit, O = newer commit, d = diff, q = close
