@@ -56,17 +56,11 @@ local plugins = {
 		end,
 	},
 
-	-- end block support
+	-- end block support (auto-enables with treesitter)
 	{
 		"RRethy/nvim-treesitter-endwise",
 		event = "InsertEnter",
-		config = function()
-			require("nvim-treesitter.configs").setup({
-				endwise = {
-					enable = true,
-				},
-			})
-		end,
+		dependencies = "nvim-treesitter/nvim-treesitter",
 	},
 
 	-- copilot

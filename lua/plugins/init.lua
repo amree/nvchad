@@ -41,19 +41,5 @@ return {
 				"markdown_inline",
 			},
 		},
-		config = function(_, opts)
-			-- Use pcall to handle both old and new nvim-treesitter APIs
-			local ok, configs = pcall(require, "nvim-treesitter.configs")
-			if ok then
-				configs.setup(opts)
-			else
-				-- New nvim-treesitter uses vim.treesitter directly
-				-- Install parsers manually
-				local parsers = opts.ensure_installed or {}
-				if #parsers > 0 then
-					vim.cmd("TSInstall " .. table.concat(parsers, " "))
-				end
-			end
-		end,
 	},
 }
