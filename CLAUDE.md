@@ -6,6 +6,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 This is a personal Neovim configuration based on NvChad v2.5. The configuration extends NvChad with custom plugins, LSP servers, and project-specific settings.
 
+**Current Versions:**
+- NvChad: v2.5
+- base46: v3.0
+- ui: v3.0 (includes blink.cmp for autocompletion)
+
 ## Installation and Setup
 
 The configuration is installed via symbolic link:
@@ -175,8 +180,8 @@ vim.keymap.set("n", "<leader>t", ":!make test<CR>")
 
 **Node.js Requirement:**
 - Copilot requires Node.js 22+
-- Configured to use: `/Users/amree/.asdf/installs/nodejs/24.11.0/bin/node`
-- This bypasses asdf's project-based version resolution to ensure Copilot always has Node.js 24
+- Configured to use: `/Users/amree/.local/share/mise/installs/node/25.3.0/bin/node`
+- This bypasses mise's project-based version resolution to ensure Copilot always has Node.js 25
 
 **Custom Keybindings:**
 - `<M-l>` - Accept suggestion
@@ -295,7 +300,25 @@ vim.keymap.set("n", "<leader>t", ":!make test<CR>")
 :Mason                " Open Mason UI for LSP/formatter installation
 :MasonUpdate          " Update Mason itself
 :LspInfo              " Show active LSP clients and their status
+:checkhealth          " Run health checks
 ```
+
+### Fresh Install - Mason Packages
+
+After a fresh install, run these commands to install LSP servers and formatters:
+
+```vim
+" LSP Servers
+:MasonInstall css-lsp eslint-lsp gopls html-lsp ruby-lsp pyright emmet-language-server tailwindcss-language-server
+
+" Go Formatters
+:MasonInstall gofumpt goimports goimports-reviser golines
+
+" Other Formatters
+:MasonInstall stylua prettier biome
+```
+
+**Note:** `standardrb` and `rubocop` run via `bundle exec` from your project, no Mason install needed.
 
 ### Git Operations
 ```vim
@@ -330,4 +353,4 @@ This configuration uses the modern `vim.lsp.config()` API (Neovim 0.10+) instead
 
 ### Why Specific Node.js Path for Copilot
 
-The configuration points Copilot to a specific Node.js installation rather than using asdf shims. This ensures Copilot always uses Node.js 24 even when working in projects with older Node.js versions in `.tool-versions`.
+The configuration points Copilot to a specific Node.js installation rather than using mise shims. This ensures Copilot always uses Node.js 25 even when working in projects with older Node.js versions in `.tool-versions`.
