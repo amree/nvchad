@@ -34,7 +34,9 @@ local servers = {
 		},
 	},
 	html = {},
-	ruby_lsp = {},
+	ruby_lsp = {
+		cmd = { "mise", "exec", "--", "ruby-lsp" },
+	},
 	-- stimulus_ls = {},
 	-- ts_ls = {}, -- Disabled: typescript-tools.nvim replaces ts_ls
 	pyright = {},
