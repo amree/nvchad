@@ -73,12 +73,12 @@ local has_rubocop = vim.fn.filereadable(vim.fn.getcwd() .. "/.rubocop.yml") == 1
 
 if has_standardrb then
 	servers.standardrb = {
-		cmd = { "bundle", "exec", "standardrb", "--lsp" },
+		cmd = { "mise", "exec", "--", "bundle", "exec", "standardrb", "--lsp" },
 		root_markers = { ".standard.yml", "Gemfile", ".git" },
 	}
 elseif has_rubocop then
 	servers.rubocop = {
-		cmd = { "bundle", "exec", "rubocop", "--lsp" },
+		cmd = { "mise", "exec", "--", "bundle", "exec", "rubocop", "--lsp" },
 		root_markers = { ".rubocop.yml", "Gemfile", ".git" },
 	}
 end
