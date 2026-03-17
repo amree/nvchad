@@ -33,6 +33,7 @@ local servers = {
 			},
 		},
 	},
+	herb_ls = {},
 	html = {},
 	ruby_lsp = {
 		cmd = { "mise", "exec", "--", "ruby-lsp" },
