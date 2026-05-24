@@ -16,3 +16,8 @@ o.listchars = "tab:→ ,trail:·,nbsp:␣"
 
 -- Reduce which-key popup delay (default is 1000ms)
 o.timeoutlen = 300
+
+-- Auto-reload buffers when files change on disk (e.g. Claude Code edits from tmux pane)
+vim.api.nvim_create_autocmd({ "FocusGained", "TermLeave", "BufEnter", "CursorHold" }, {
+  command = "checktime",
+})
