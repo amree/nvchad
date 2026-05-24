@@ -184,6 +184,51 @@ local plugins = {
 		end,
 	},
 
+	-- Telescope override: larger preview, vertical layout for live_grep
+	{
+		"nvim-telescope/telescope.nvim",
+		opts = function(_, opts)
+			opts.defaults = vim.tbl_deep_extend("force", opts.defaults or {}, {
+				layout_strategy = "horizontal",
+				layout_config = {
+					horizontal = { preview_width = 0.6, width = 0.95, height = 0.9 },
+					vertical = { preview_height = 0.6, width = 0.95, height = 0.95 },
+				},
+			})
+			opts.pickers = vim.tbl_deep_extend("force", opts.pickers or {}, {
+				live_grep = {
+					layout_strategy = "vertical",
+					layout_config = { preview_height = 0.65, width = 0.95, height = 0.95 },
+				},
+				grep_string = {
+					layout_strategy = "vertical",
+					layout_config = { preview_height = 0.65, width = 0.95, height = 0.95 },
+				},
+			})
+			return opts
+		end,
+	},
+
+	-- find/replace across project (VSCode/Zed-style search panel)
+	{
+		"MagicDuck/grug-far.nvim",
+		cmd = { "GrugFar", "GrugFarWithin" },
+		keys = {
+			{ "<leader>sr", "<cmd>GrugFar<cr>", desc = "Search & Replace (project)" },
+			{
+				"<leader>sw",
+				function()
+					require("grug-far").open({ prefills = { search = vim.fn.expand("<cword>") } })
+				end,
+				desc = "Search word under cursor",
+			},
+			{ "<leader>sr", "<cmd>GrugFarWithin<cr>", mode = "v", desc = "Search & Replace (selection)" },
+		},
+		config = function()
+			require("grug-far").setup({})
+		end,
+	},
+
 	-- Show package.json versions inline
 	{
 		"vuki656/package-info.nvim",
