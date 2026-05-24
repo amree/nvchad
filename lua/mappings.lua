@@ -26,4 +26,13 @@ map("v", "<leader>fW", function()
 	require("telescope.builtin").live_grep({ default_text = vim.fn.getreg("v") })
 end, { desc = "Live grep visual selection" })
 
+-- Telescope: list LSP symbols (methods/functions/classes)
+map("n", "<leader>fs", function()
+	require("telescope.builtin").lsp_document_symbols()
+end, { desc = "Document symbols" })
+
+map("n", "<leader>fS", function()
+	require("telescope.builtin").lsp_dynamic_workspace_symbols()
+end, { desc = "Workspace symbols" })
+
 -- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
