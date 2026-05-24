@@ -35,6 +35,10 @@ local servers = {
 	},
 	herb_ls = {},
 	html = {},
+	elixirls = {
+		cmd = { "elixir-ls" },
+		root_markers = { "mix.exs", ".git" },
+	},
 	ruby_lsp = {
 		cmd = { "mise", "exec", "--", "ruby-lsp" },
 	},

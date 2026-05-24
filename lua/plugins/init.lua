@@ -39,6 +39,10 @@ return {
 				"scss",
 				"markdown",
 				"markdown_inline",
+				-- Elixir
+				"elixir",
+				"heex",
+				"eex",
 			},
 		},
 	},

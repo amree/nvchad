@@ -58,6 +58,10 @@ local options = {
 		-- JSON (auto-detect Biome or Prettier)
 		json = js_formatter,
 		jsonc = js_formatter,
+		-- Elixir
+		elixir = { "mix" },
+		eelixir = { "mix" },
+		heex = { "mix" },
 		-- CSS/HTML/Markdown (Biome doesn't support, use Prettier)
 		css = { "prettier" },
 		scss = { "prettier" },
