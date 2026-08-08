@@ -1,0 +1,18 @@
+diff --git a/lua/nvim-treesitter/endwise.lua b/lua/nvim-treesitter/endwise.lua
+index 151ebe2..17f13c5 100644
+--- a/lua/nvim-treesitter/endwise.lua
++++ b/lua/nvim-treesitter/endwise.lua
+@@ -197,7 +197,12 @@ end
+ --  endwise_end_suffix, defaults to matching the whole string
+ vim.treesitter.query.add_directive('endwise!', function(match, _, _, predicate, metadata)
+     metadata.endwise_end_text = predicate[2]
+-    metadata.endwise_end_suffix = match[predicate[3]]
++    local suffix_match = match[predicate[3]]
++    if type(suffix_match) == "table" then
++        metadata.endwise_end_suffix = suffix_match[#suffix_match]
++    else
++        metadata.endwise_end_suffix = suffix_match
++    end
+     metadata.endwise_end_node_type = predicate[4]
+     metadata.endwise_shiftcount = predicate[5] or 1
+     metadata.endwise_end_suffix_pattern = predicate[6] or '^.*$'

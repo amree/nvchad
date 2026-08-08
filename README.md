@@ -24,3 +24,6 @@ Also update LSP servers and formatters when needed:
 ```
 :MasonUpdate
 ```
+
+Two plugins carry local patches, which makes `:Lazy sync` refuse to update
+them. See [patches/README.md](patches/README.md) for the update routine.

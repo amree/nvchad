@@ -1,0 +1,22 @@
+diff --git a/lua/nvchad/stl/utils.lua b/lua/nvchad/stl/utils.lua
+index 928121d..9522171 100644
+--- a/lua/nvchad/stl/utils.lua
++++ b/lua/nvchad/stl/utils.lua
+@@ -169,14 +169,14 @@ M.autocmds = function()
+       local data = args.data.params.value
+       local progress = ""
+ 
+-      if data.percentage then
++      if data.percentage and type(data.percentage) == "number" then
+         local idx = math.max(1, math.floor(data.percentage / 10))
+         local icon = spinners[idx]
+         progress = icon .. " " .. data.percentage .. "%% "
+       end
+ 
+-      local loaded_count = data.message and string.match(data.message, "^(%d+/%d+)") or ""
+-      local str = progress .. (data.title or "") .. " " .. (loaded_count or "")
++      local loaded_count = (type(data.message) == "string" and string.match(data.message, "^(%d+/%d+)")) or ""
++      local str = progress .. (type(data.title) == "string" and data.title or "") .. " " .. (loaded_count or "")
+       M.state.lsp_msg = data.kind == "end" and "" or str
+       vim.cmd.redrawstatus()
+     end,
