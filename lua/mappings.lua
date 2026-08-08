@@ -16,6 +16,10 @@ map("n", "<C-l>", "<cmd>TmuxNavigateRight<cr>", { desc = "Navigate right" })
 -- Toggle invisible character display
 map("n", "<leader>ti", "<cmd>set list!<cr>", { desc = "Toggle invisible chars" })
 
+-- Telescope: find_files/live_grep including hidden dirs/files (e.g. .github) - override NvChad defaults
+map("n", "<leader>ff", "<cmd>Telescope find_files hidden=true<CR>", { desc = "telescope find files (hidden)" })
+map("n", "<leader>fw", "<cmd>Telescope live_grep hidden=true<CR>", { desc = "telescope live grep (hidden)" })
+
 -- Telescope: live_grep prefilled with word under cursor / visual selection
 map("n", "<leader>fW", function()
 	require("telescope.builtin").live_grep({ default_text = vim.fn.expand("<cword>") })
