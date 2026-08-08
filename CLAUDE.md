@@ -49,8 +49,7 @@ lua/
 ├── configs/                      # Detailed plugin configurations
 │   ├── lazy.lua                 # Plugin manager settings + disabled built-in plugins
 │   ├── lspconfig.lua            # LSP server configurations (uses vim.lsp.config API)
-│   ├── conform.lua              # Formatter configuration with auto-format
-│   └── copilot.lua              # GitHub Copilot settings
+│   └── conform.lua               # Formatter configuration with auto-format
 └── plugins/                      # Plugin specifications
     ├── init.lua                 # Core plugins (conform, lspconfig, treesitter)
     └── others.lua               # Additional plugins (git, editing, UI)
@@ -189,25 +188,6 @@ vim.keymap.set("n", "<leader>t", ":!make test<CR>")
 
 **Important:** These mappings override NvChad's default window navigation.
 
-### GitHub Copilot Setup
-
-**Plugin:** zbirenbaum/copilot.lua
-
-**Node.js Requirement:**
-
-- Copilot requires Node.js 22+
-- Configured to use: `~/.local/share/mise/installs/node/latest/bin/node` (via `vim.fn.expand`)
-- Uses mise's `latest` symlink so the config is portable across machines without hardcoding a version
-
-**Custom Keybindings:**
-
-- `<M-l>` - Accept suggestion
-- `<M-]>` - Next suggestion
-- `<M-[>` - Previous suggestion
-- `<C-]>` - Dismiss suggestion
-
-**Disabled filetypes:** yaml, markdown, help, gitcommit, gitrebase
-
 ### Key Customizations
 
 - Leader key: `<Space>` (NvChad default)
@@ -246,7 +226,6 @@ vim.keymap.set("n", "<leader>t", ":!make test<CR>")
 | vim-sandwich            | Surround text objects        | On `sa/sd/sr` keys |
 | mini.trailspace         | Strip trailing whitespace    | On `BufRead`       |
 | nvim-treesitter-endwise | Auto-add `end` blocks        | On `InsertEnter`   |
-| copilot.lua             | GitHub Copilot               | On `InsertEnter`   |
 | vim-matchup             | Better % matching            | On `CursorMoved`   |
 | nvim-notify             | Pretty notifications         | Immediate          |
 | trouble.nvim            | Better diagnostics list      | On command/keys    |
@@ -271,7 +250,6 @@ vim.keymap.set("n", "<leader>t", ":!make test<CR>")
   - Organize imports on save
   - JSX close tag completion
   - Complete function calls with signatures
-- Copilot for AI-powered suggestions
 - blink.cmp for fast completion engine
 
 **Formatting & Linting:**
@@ -379,10 +357,6 @@ This configuration uses the modern `vim.lsp.config()` API (Neovim 0.10+) instead
 - Prepares for nvim-lspconfig v3.0.0
 - Uses Neovim's native LSP API
 - Sets global defaults once with `vim.lsp.config("*", {...})`
-
-### Why Specific Node.js Path for Copilot
-
-The configuration points Copilot to mise's `latest` Node.js symlink (`~/.local/share/mise/installs/node/latest/bin/node`) rather than using mise shims. This ensures Copilot always uses the latest installed Node.js even when working in projects with older Node.js versions in `.tool-versions` or `.mise.toml`.
 
 ### Why `mise exec` for Rubocop/StandardRB LSP
 

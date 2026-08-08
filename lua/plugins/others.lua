@@ -63,16 +63,6 @@ local plugins = {
 		dependencies = "nvim-treesitter/nvim-treesitter",
 	},
 
-	-- copilot
-	{
-		"zbirenbaum/copilot.lua",
-		cmd = "Copilot",
-		event = "InsertEnter",
-		config = function()
-			require("configs.copilot")
-		end,
-	},
-
 	-- matching brackets
 	{
 		"andymass/vim-matchup",
