@@ -16,6 +16,9 @@ map("n", "<C-l>", "<cmd>TmuxNavigateRight<cr>", { desc = "Navigate right" })
 -- Toggle invisible character display
 map("n", "<leader>ti", "<cmd>set list!<cr>", { desc = "Toggle invisible chars" })
 
+-- Dismiss nvim-notify popups
+map("n", "<leader>nd", function() require("notify").dismiss() end, { desc = "Dismiss notifications" })
+
 -- Telescope: find_files/live_grep including hidden dirs/files (e.g. .github) - override NvChad defaults
 map("n", "<leader>ff", "<cmd>Telescope find_files hidden=true<CR>", { desc = "telescope find files (hidden)" })
 map("n", "<leader>fw", "<cmd>Telescope live_grep hidden=true<CR>", { desc = "telescope live grep (hidden)" })
