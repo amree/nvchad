@@ -207,9 +207,21 @@ vim.keymap.set("n", "<leader>t", ":!make test<CR>")
 | `<leader>gd`  | Open diff view                        | diffview.nvim      |
 | `<leader>gh`  | File git history                      | diffview.nvim      |
 | `<leader>gq`  | Close diff view                       | diffview.nvim      |
+| `<leader>gp`  | Preview hunk diff                     | gitsigns.nvim      |
+| `<leader>gl`  | Toggle signs vs last commit (HEAD~1)  | gitsigns.nvim      |
+| `<leader>glm` | Toggle signs vs main branch           | gitsigns.nvim      |
+| `]c` / `[c`   | Next/prev hunk                        | gitsigns.nvim      |
 | `<leader>xx`  | Toggle diagnostics                    | trouble.nvim       |
 | `<leader>xd`  | Buffer diagnostics                    | trouble.nvim       |
 | `<leader>ti`  | Toggle invisible chars                | built-in           |
+| `<leader>nd`  | Dismiss nvim-notify popups             | nvim-notify        |
+| `<leader>ff`  | Find files (incl. hidden)             | telescope.nvim      |
+| `<leader>fw`  | Live grep (incl. hidden)              | telescope.nvim      |
+| `<leader>fW`  | Live grep word/selection under cursor | telescope.nvim      |
+| `<leader>fs`  | LSP document symbols                  | telescope.nvim      |
+| `<leader>fS`  | LSP workspace symbols                 | telescope.nvim      |
+| `<leader>sr`  | Search & replace (project)            | grug-far.nvim       |
+| `<leader>sw`  | Search & replace word under cursor    | grug-far.nvim       |
 | `<C-h/j/k/l>` | Tmux navigation                       | vim-tmux-navigator |
 | `sa/sd/sr`    | Add/delete/replace surround           | vim-sandwich       |
 | `zR/zM`       | Open/close all folds                  | nvim-ufo           |
@@ -221,6 +233,7 @@ vim.keymap.set("n", "<leader>t", ":!make test<CR>")
 | lazygit.nvim            | Git UI in floating window    | On `<leader>gg`    |
 | git-messenger.vim       | Show commit for current line | On `<leader>gm`    |
 | diffview.nvim           | Advanced diff viewer         | On command/keys    |
+| gitsigns.nvim           | Per-line change signs/hunks  | On `BufRead`       |
 | vim-fugitive            | Git commands                 | On `:Git` command  |
 | gitlinker.nvim          | Open code on GitHub          | On `BufRead`       |
 | vim-sandwich            | Surround text objects        | On `sa/sd/sr` keys |
@@ -232,6 +245,7 @@ vim.keymap.set("n", "<leader>t", ":!make test<CR>")
 | nvim-ufo                | Better code folding          | On command/keys    |
 | typescript-tools.nvim   | Enhanced TS features         | On TS/JS files     |
 | package-info.nvim       | Package.json versions        | On JSON files      |
+| grug-far.nvim           | Project search & replace     | On command/keys    |
 | vim-tmux-navigator      | Tmux pane navigation         | Immediate          |
 
 ### React/TypeScript/Vite Development

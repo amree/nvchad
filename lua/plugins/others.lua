@@ -29,6 +29,33 @@ local plugins = {
 		end,
 	},
 
+	-- per-line change markers in gutter, no full diff needed
+	{
+		"lewis6991/gitsigns.nvim",
+		event = "BufRead",
+		config = function()
+			require("gitsigns").setup({
+				on_attach = function(bufnr)
+					local gs = require("gitsigns")
+					local map = function(mode, l, r, desc)
+						vim.keymap.set(mode, l, r, { buffer = bufnr, desc = desc })
+					end
+					map("n", "]c", gs.next_hunk, "Next Hunk")
+					map("n", "[c", gs.prev_hunk, "Prev Hunk")
+					map("n", "<leader>gp", gs.preview_hunk, "Preview Hunk")
+					map("n", "<leader>gl", function()
+						vim.b.gitsigns_showing_last_commit = not vim.b.gitsigns_showing_last_commit
+						gs.change_base(vim.b.gitsigns_showing_last_commit and "HEAD~1" or nil, true)
+					end, "Toggle Last Commit Signs")
+					map("n", "<leader>glm", function()
+						vim.b.gitsigns_showing_main = not vim.b.gitsigns_showing_main
+						gs.change_base(vim.b.gitsigns_showing_main and "main" or nil, true)
+					end, "Toggle Main Branch Signs")
+				end,
+			})
+		end,
+	},
+
 	-- git
 	{
 		"tpope/vim-fugitive",
