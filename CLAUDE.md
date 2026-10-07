@@ -216,6 +216,7 @@ vim.keymap.set("n", "<leader>t", ":!make test<CR>")
 | `<leader>xx`  | Toggle diagnostics                    | trouble.nvim       |
 | `<leader>xd`  | Buffer diagnostics                    | trouble.nvim       |
 | `<leader>ti`  | Toggle invisible chars                | built-in           |
+| `<leader>]`   | Open definition in vertical split     | built-in           |
 | `<leader>nd`  | Dismiss nvim-notify popups             | nvim-notify        |
 | `<leader>ff`  | Find files (incl. hidden)             | telescope.nvim      |
 | `<leader>fw`  | Live grep (incl. hidden)              | telescope.nvim      |

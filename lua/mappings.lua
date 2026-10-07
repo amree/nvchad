@@ -16,6 +16,9 @@ map("n", "<C-l>", "<cmd>TmuxNavigateRight<cr>", { desc = "Navigate right" })
 -- Toggle invisible character display
 map("n", "<leader>ti", "<cmd>set list!<cr>", { desc = "Toggle invisible chars" })
 
+-- Open definition under cursor in a vertical split (<C-w>] does horizontal)
+map("n", "<leader>]", "<cmd>vertical wincmd ]<cr>", { desc = "Definition in vsplit" })
+
 -- Dismiss nvim-notify popups
 map("n", "<leader>nd", function() require("notify").dismiss() end, { desc = "Dismiss notifications" })
 
