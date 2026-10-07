@@ -29,6 +29,16 @@ local plugins = {
 		end,
 	},
 
+	-- peek LSP definition in a floating window without jumping
+	{
+		"rmagatti/goto-preview",
+		keys = {
+			{ "<leader>pd", function() require("goto-preview").goto_preview_definition() end, desc = "Peek definition" },
+			{ "<leader>pq", function() require("goto-preview").close_all_win() end, desc = "Close peek windows" },
+		},
+		opts = {},
+	},
+
 	-- per-line change markers in gutter, no full diff needed
 	{
 		"lewis6991/gitsigns.nvim",

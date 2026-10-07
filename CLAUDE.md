@@ -208,6 +208,8 @@ vim.keymap.set("n", "<leader>t", ":!make test<CR>")
 | `<leader>gh`  | File git history                      | diffview.nvim      |
 | `<leader>gq`  | Close diff view                       | diffview.nvim      |
 | `<leader>gp`  | Preview hunk diff                     | gitsigns.nvim      |
+| `<leader>pd`  | Peek definition (floating window)     | goto-preview       |
+| `<leader>pq`  | Close peek windows                    | goto-preview       |
 | `<leader>gl`  | Toggle signs vs last commit (HEAD~1)  | gitsigns.nvim      |
 | `<leader>glm` | Toggle signs vs main branch           | gitsigns.nvim      |
 | `]c` / `[c`   | Next/prev hunk                        | gitsigns.nvim      |
@@ -234,6 +236,7 @@ vim.keymap.set("n", "<leader>t", ":!make test<CR>")
 | git-messenger.vim       | Show commit for current line | On `<leader>gm`    |
 | diffview.nvim           | Advanced diff viewer         | On command/keys    |
 | gitsigns.nvim           | Per-line change signs/hunks  | On `BufRead`       |
+| goto-preview            | Floating definition peek     | On `<leader>pd`    |
 | vim-fugitive            | Git commands                 | On `:Git` command  |
 | gitlinker.nvim          | Open code on GitHub          | On `BufRead`       |
 | vim-sandwich            | Surround text objects        | On `sa/sd/sr` keys |
